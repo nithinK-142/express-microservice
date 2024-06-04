@@ -1,0 +1,22 @@
+import express from "express";
+import cors from "cors";
+// import Routes from "./routes/index.js";
+
+import "dotenv/config";
+
+const port = process.env.PORT || 5002;
+
+const app = express();
+
+// middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cors());
+
+app.get("/", (_, res) => {
+  return res.send("Server saying hello...");
+});
+
+// app.use(Routes);
+
+app.listen(port, () => console.log("⚙️ Server started at", port));
