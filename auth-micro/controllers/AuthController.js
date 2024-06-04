@@ -47,7 +47,9 @@ class AuthController {
         email: user.email,
       };
 
-      const token = jwt.sign(payload, process.env.JWT_SECRET);
+      const token = jwt.sign(payload, process.env.JWT_SECRET, {
+        expiresIn: "1d",
+      });
 
       return res
         .status(200)
@@ -55,6 +57,11 @@ class AuthController {
     } catch (error) {
       return res.status(500).json({ error: "An error occurred during login." });
     }
+  }
+
+  static async user(req, res) {
+    const user = req.user;
+    return res.status(200).json({ user });
   }
 }
 
