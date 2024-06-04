@@ -9,6 +9,11 @@ class UserController {
         where: {
           id,
         },
+        select: {
+          id: true,
+          name: true,
+          email: true,
+        },
       });
 
       if (!user) {
