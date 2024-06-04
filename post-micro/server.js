@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-// import Routes from "./routes/index.js";
+import Routes from "./routes/index.js";
 
 import "dotenv/config";
 
@@ -17,6 +17,6 @@ app.get("/", (_, res) => {
   return res.send("Server saying hello...");
 });
 
-// app.use(Routes);
+app.use(Routes);
 
 app.listen(port, () => console.log("⚙️ Server started at", port));
